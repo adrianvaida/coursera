@@ -45,6 +45,7 @@ section .red{
 .mB {
 	margin-bottom: 50px;
 }
+
 #navCV {
 	text-align: center;
 }
@@ -58,6 +59,7 @@ section .red{
 	background: #E41A1D;
 	color: #fff;
 }
+
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
 	background: rgba(255,255,255,.2);
 	color: #80a845;
@@ -97,10 +99,20 @@ section .red{
 
 }
 .bb {border: 1px solid #e41a1d;}
+.bbc {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 10px 0;
+	height: 350px;
+	overflow: hidden;
+}
 .bCenter {margin: auto; display: block; margin-bottom: 50px;}
 .myPic {
 	width: 25%;
 	margin: 30px auto;
+}
+h2.tred {
+	color: #E41A1D;
 }
 #svg circle {
   stroke-dashoffset: 0;
@@ -118,6 +130,11 @@ section .red{
     border-radius: unset;
 }
 
+}
+canvas {
+	position: absolute;
+    bottom: 5%;
+    left: 20%;
 }
 /*
 .pr {position: relative;}
