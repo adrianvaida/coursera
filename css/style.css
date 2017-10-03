@@ -17,7 +17,7 @@ section p {
 	color: #666;
 	text-align: center;
 	padding: 10px;
-	margin: 10px;
+	margin: 10px auto;
 	width: 300px;
 }
 .right {
@@ -31,10 +31,19 @@ section p {
 	color: #600;
 
 }
-button {
+input, button {
 	font: bold 24px/150% Arial, Helvetica, sans-serif;
 	display: block;
 	width: 300px;
 	padding: 10px;
 	margin: 10px auto;
+}
+body {
+	width: 400px;
+	margin: 0 auto;
+	background: #fff;
+	height: 100vh;
+}
+html {
+	background: #444;
 }
