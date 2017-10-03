@@ -10,3 +10,23 @@ h1 {
 	padding: 15px 0;
 	
 }
+section p {
+	font: bold 24px/150% Arial, Helvetica, sans-serif;
+	background: #ccc;
+	border: #999 2px solid;
+	color: #666;
+	text-align: center;
+	padding: 10px;
+	margin: 10px;
+	width: 400px;
+}
+.right {
+	background: #0c0;
+	border: #090 2px solid;
+	color: #060;
+}
+.wrong {
+	background: #c00;
+	border: #900 2px solid;
+	color: #600;
+}

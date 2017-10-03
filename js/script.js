@@ -1,4 +1,12 @@
 // JavaScript Document
+function update(element, content, klass) {
+	var p = element.firstChild || document.createElement("p");
+	p.textContent = content;
+	element.appendChild(p);
+	if(klass) {
+		p.className = klass;
+	}
+}
 var quiz = {
 	"name":"Super Hero Name Quiz",
 	"description":"How many super heroes can you name?",
@@ -9,7 +17,15 @@ var quiz = {
 		{"question": "Wonder Woman", "answer": "Dianna Prince" }
 	]
 };
+/// dom reference ///
 
+
+var $question = document.getElementById("question");
+var $score = document.getElementById("score");
+var $feedbak = document.getElementById("feedback");
+
+
+update($score, score);
 var score = 0; // initial score
 
 play(quiz);
@@ -25,19 +41,21 @@ function play(quiz) {
 	gameOver();
 	
 	function ask(question) {
-		return prompt(quiz.question + question); // quiz[i][0] is the ith question
+		update($question,quiz.question + question);
+		return prompt("Enter your answer"); // quiz[i][0] is the ith question
 	}
 	function check(answer) {
-		if(answer === quiz.question[i]) { // quiz[i][1] is the ith answer
-			alert("Correct!");
+		if(answer === quiz.questions[i].answer) { // quiz[i][1] is the ith answer
+			update($feedbak, "Correct!", "right");
 			// increase score by 1
 			score++;
+			update($score, score);
 		} else {
-			alert("Wrong!");
+			update($feedbak, "Wrong!", "wrong");
 		}
 	}
 	function gameOver() {
 		// inform the player that the game has finished and tell how many points they have scored
-		alert("Game Over, you scored " + score + " points");
+		update($question, "Game Over, you scored " + score + " points");
 	}
 }
