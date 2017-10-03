@@ -1,3 +1,11 @@
+
+// DOM references //
+var $question = document.getElementById('question');
+var $score = document.getElementById('score');
+var $feedback = document.getElementById('feedback');
+var $start = document.getElementById('button');
+
+
 // JavaScript Document
 function update(element, content, klass) {
 	var p = element.firstChild || document.createElement("p");
@@ -7,55 +15,71 @@ function update(element, content, klass) {
 		p.className = klass;
 	}
 }
+
 var quiz = {
-	"name":"Super Hero Name Quiz",
-	"description":"How many super heroes can you name?",
-	"question":"What is the real name of ",
-	"questions": [
-		{"question": "Superman", "answer": "Clarke Kent" },
-		{"question": "Batman", "answer": "Bruce Wayne" },
-		{"question": "Wonder Woman", "answer": "Dianna Prince" }
-	]
+	'name': 'Super Hero Name Quiz',
+	'description': 'HOw many super heros can you name?',
+	'question': 'What is the real name of ',
+	'questions': [{
+		'question': 'Superman',
+		'answer': 'Clark Kent'
+	}, {
+		'question': 'Wonderwoman',
+		'answer': 'Dianna Prince'
+	}, {
+		'question': 'Batman',
+		'answer': 'Bruce Wayne'
+	}, ]
 };
 /// dom reference ///
 
+// Event listeners
+$start.addEventListener('click', function () {
+	play(quiz)
+}, false);
 
-var $question = document.getElementById("question");
-var $score = document.getElementById("score");
-var $feedbak = document.getElementById("feedback");
-
-
-update($score, score);
-var score = 0; // initial score
-
-play(quiz);
-
+// main function declaration
 function play(quiz) {
+	var score = 0; // init score
 	// main game loop
-	for(var i = 0, question, answer, max = quiz.questions.length; i < max; i++) {
+	update($score, score);
+	for (var i = 0, question, answer; i < quiz.questions.length; i++) {
 		question = quiz.questions[i].question;
 		answer = ask(question);
+
 		check(answer);
 	}
 	// end of main game loop
 	gameOver();
-	
+
+	// helper functions
 	function ask(question) {
-		update($question,quiz.question + question);
-		return prompt("Enter your answer"); // quiz[i][0] is the ith question
+
+		update($question, quiz.question + question);
+		alert($question.firstChild.textContent);
+		return prompt("Enter your answer:");
+
 	}
+
 	function check(answer) {
-		if(answer === quiz.questions[i].answer) { // quiz[i][1] is the ith answer
-			update($feedbak, "Correct!", "right");
-			// increase score by 1
+
+		if (answer === quiz.questions[i].answer) {
+			update($feedback, 'Correct!', 'right');
+	// increase score by 1
 			score++;
 			update($score, score);
 		} else {
-			update($feedbak, "Wrong!", "wrong");
+
+			update($feedback, 'Wrong!', 'wrong');
+
 		}
 	}
+
 	function gameOver() {
-		// inform the player that the game has finished and tell how many points they have scored
-		update($question, "Game Over, you scored " + score + " points");
+
+		// inform the player that the game has finished
+		// and tell them how many points they have scored
+		update($question, 'Game Over, you scored ' + score + ' points');
+
 	}
 }
