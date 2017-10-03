@@ -1,8 +1,20 @@
+
 // DOM references //
 var $question = document.getElementById('question');
 var $score = document.getElementById('score');
 var $feedback = document.getElementById('feedback');
 var $start = document.getElementById('button');
+
+
+// JavaScript Document
+function update(element, content, klass) {
+	var p = element.firstChild || document.createElement("p");
+	p.textContent = content;
+	element.appendChild(p);
+	if(klass) {
+		p.className = klass;
+	}
+}
 
 var quiz = {
 	'name': 'Super Hero Name Quiz',
@@ -19,19 +31,7 @@ var quiz = {
 		'answer': 'Bruce Wayne'
 	}, ]
 };
-
-
-// view functions //
-function update(element, content, klass) {
-	var p = element.firstChild || document.createElement('p');
-
-	p.textContent = content;
-	element.appendChild(p);
-
-	if (klass) {
-		p.className = klass;
-	}
-}
+/// dom reference ///
 
 // Event listeners
 $start.addEventListener('click', function () {
@@ -54,25 +54,32 @@ function play(quiz) {
 
 	// helper functions
 	function ask(question) {
+
 		update($question, quiz.question + question);
 		alert($question.firstChild.textContent);
 		return prompt("Enter your answer:");
+
 	}
 
 	function check(answer) {
+
 		if (answer === quiz.questions[i].answer) {
 			update($feedback, 'Correct!', 'right');
-			// increase score by 1
+	// increase score by 1
 			score++;
 			update($score, score);
 		} else {
+
 			update($feedback, 'Wrong!', 'wrong');
+
 		}
 	}
 
 	function gameOver() {
+
 		// inform the player that the game has finished
 		// and tell them how many points they have scored
 		update($question, 'Game Over, you scored ' + score + ' points');
+
 	}
 }
