@@ -1,12 +1,5 @@
 // JavaScript Document
-function update(element, content, klass) {
-	var p = element.firstChild || document.createElement("p");
-	p.textContent = content;
-	element.appendChild(p);
-	if(klass) {
-		p.className = klass;
-	}
-}
+
 var quiz = {
 	"name":"Super Hero Name Quiz",
 	"description":"How many super heroes can you name?",
@@ -25,21 +18,21 @@ var $score = document.getElementById("score");
 var $feedbak = document.getElementById("feedback");
 
 
-update($score, score);
+
 var score = 0; // initial score
 
 play(quiz);
 
 function play(quiz) {
-	// main game loop
-	for(var i = 0, question, answer, max = quiz.questions.length; i < max; i++) {
-		question = quiz.questions[i].question;
-		answer = ask(question);
-		check(answer);
+	update($score, score);
+	function update(element, content, klass) {
+	var p = element.firstChild || document.createElement("p");
+	p.textContent = content;
+	element.appendChild(p);
+	if(klass) {
+		p.className = klass;
 	}
-	// end of main game loop
-	gameOver();
-	
+}
 	function ask(question) {
 		update($question,quiz.question + question);
 		return prompt("Enter your answer"); // quiz[i][0] is the ith question
@@ -54,8 +47,17 @@ function play(quiz) {
 			update($feedbak, "Wrong!", "wrong");
 		}
 	}
+	// main game loop
+	for(var i = 0, question, answer, max = quiz.questions.length; i < max; i++) {
+		question = quiz.questions[i].question;
+		answer = ask(question);
+		check(answer);
+	}
+	// end of main game loop
+	
 	function gameOver() {
 		// inform the player that the game has finished and tell how many points they have scored
 		update($question, "Game Over, you scored " + score + " points");
 	}
+	gameOver();
 }
