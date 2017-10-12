@@ -47,3 +47,6 @@ body {
 html {
 	background: #444;
 }
+#timer {
+	text-align: center;
+}

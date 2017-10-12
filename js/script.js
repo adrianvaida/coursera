@@ -5,6 +5,7 @@ var $score = document.getElementById('score');
 var $feedback = document.getElementById('feedback');
 var $start = document.getElementById('button');
 var $form = document.getElementById("answer");
+var $timer = document.getElementById("timer");
 
 // JavaScript Document
 function update(element, content, klass) {
@@ -48,6 +49,10 @@ function show(element) {
 hide($form);
 // main function declaration
 function play(quiz) {
+	// innitialize timer and set up an interval that counts down;
+	var time = 20;
+	update($timer, time);
+	var interval = window.setInterval (countDown, 1000);
 	hide($start);
 	show($form);
 	$form.addEventListener("submit", function(event) {
@@ -109,5 +114,23 @@ function chooseQuestion() {
 		update($question, 'Game Over, you scored ' + score + ' points');
 		hide($form);
 	show($start);
+		// stop the countDown interval
+		window.clearInterval(interval);
 	}
+	
+	//this is called every second and decrease the time
+	function countDown() {
+		// decrease time by 1
+		time--;
+		// update the time displayed
+		update($timer, time);
+		// the game is over if the timer has reached 0
+		if(time <= 0) {
+			gameOver();
+		}
+	}
+	
+	
+	
+	
 }
