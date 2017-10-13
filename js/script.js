@@ -19,7 +19,7 @@ function update(element, content, klass) {
 
 var quiz = {
 	'name': 'Super Hero Name Quiz',
-	'description': 'HOw many super heros can you name?',
+	'description': 'How many super heros can you name?',
 	'question': 'What is the real name of ',
 	'questions': [{
 		'question': 'Superman',
@@ -32,7 +32,6 @@ var quiz = {
 		'answer': 'Bruce Wayne'
 	}, ]
 };
-/// dom reference ///
 
 // Event listeners
 $start.addEventListener('click', function () {
@@ -62,26 +61,17 @@ function play(quiz) {
 	var score = 0; // init score
 	// main game loop
 	update($score, score);
-//	for (var i = 0, question, answer; i < quiz.questions.length; i++) {
-//		question = quiz.questions[i].question;
-//		answer = ask(question);
-//
-//		check(answer);
-//	}
 	var i = 0;
 	chooseQuestion();
 	// end of main game loop
-	//gameOver();
+
 function chooseQuestion() {
 	var question = quiz.questions[i].question;
 	ask(question);
 }
-	// helper functions
 	function ask(question) {
 
 		update($question, quiz.question + question);
-//		alert($question.firstChild.textContent);
-//		return prompt("Enter your answer:");
 		$form[0].value = "";
 		$form[0].focus();
 
