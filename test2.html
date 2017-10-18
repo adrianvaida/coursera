@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chalenge 02</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	
+var years = [2001, 1985, 1994, 2014,1973];
+
+	
+function printFullAge(years) {
+	var ages = [];
+	var fullAges = [];
+	for(var i = 0; i <years.length; i++) {
+		ages[i] = 2016 - years[i];
+	}
+	for(i = 0; i < ages.length; i++) {
+		if(ages[i] >= 18) {
+			console.log("Person "+ (i + 1) +" is " + ages[i] + " years old, and is of full age.");
+			fullAges.push(true);
+		} else {
+			console.log("Person "+ (i + 1) +" is " + ages[i] + " years old, and is not of full age.");
+			fullAges.push(false);
+		}
+	}
+	return fullAges;
+	
+}
+var full_1 = printFullAge(years);
+var full_2 = printFullAge([2012, 1915, 1999]);
+	console.log(full_1);
+	console.log(full_2);
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Challenge one</title>
+</head>
+
+<body>
+<script type="text/javascript">
+var johnHeight = 172;
+var jonAge = 25;
+var friendHeight = 185;
+var friendAge = 23;
+var otherFriendAge = 32;
+var otherFriendHeight = 185;
+var johnScore = johnHeight + 5 * jonAge;
+var friendScore = friendHeight + 5 * friendAge;
+var otherFriendScore = otherFriendHeight + 5 * otherFriendAge;
+	if(johnScore > friendScore && johnScore > otherFriendScore) {
+		console.log("John wins the game with " + johnScore + " points.");
+	} else if(friendScore > johnScore && friendScore > otherFriendScore) {
+		console.log("Friend of John win the game with " + friendScore + " points."); 
+	} else if(otherFriendScore > johnScore && otherFriendScore > friendScore) {
+		console.log("The other friend of John win the game with " + otherFriendScore + " points."); 
+	} else{
+		console.log("There is draw.");
+	}
+	
+</script>
+</body>
+</html>
