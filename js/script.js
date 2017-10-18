@@ -8,6 +8,7 @@ var $form = document.getElementById("answer");
 var $timer = document.getElementById("timer");
 
 // JavaScript Document
+
 function update(element, content, klass) {
 	var p = element.firstChild || document.createElement("p");
 	p.textContent = content;
@@ -68,7 +69,7 @@ function play(quiz) {
 function chooseQuestion() {
 	var question = quiz.questions[i].question;
 	ask(question);
-}
+
 	function ask(question) {
 
 		update($question, quiz.question + question);
@@ -97,6 +98,17 @@ function chooseQuestion() {
 		}
 	}
 
+	// main game loop
+	for(var i = 0, question, answer, max = quiz.questions.length; i < max; i++) {
+		question = quiz.questions[i].question;
+		answer = ask(question);
+		check(answer);
+	}
+	// end of main game loop
+	
+
+
+
 	function gameOver() {
 
 		// inform the player that the game has finished
@@ -107,6 +119,10 @@ function chooseQuestion() {
 		// stop the countDown interval
 		window.clearInterval(interval);
 	}
+
+	gameOver();
+}
+
 	
 	//this is called every second and decrease the time
 	function countDown() {
@@ -124,3 +140,4 @@ function chooseQuestion() {
 	
 	
 }
+
